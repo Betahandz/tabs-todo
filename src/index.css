@@ -1,13 +1,333 @@
-body {
+@font-face {
+  font-family: pro;
+  src: url(./fonts/Roboto-Bold.ttf);
+}
+@font-face {
+  font-family: lite;
+  src: url(./fonts/Roboto-Regular.ttf);
+}
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  resize: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  min-height: 100vh;
+  background-color: rgb(20, 30, 40);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: pro;
+  color: orangered;
+  font-size: 70px;
+}
+
+.ms {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.ms .mst {
+  font-family: pro;
+  font-size: 50px;
+  color: rgb(20, 30, 40);
+  filter: drop-shadow(-1px -1px 0 white) drop-shadow(1px 1px 0 orangered);
+}
+.ms .compass .cordinates {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+}
+.ms .compass .cordinates li {
+  padding: 10px 10px;
+  margin-right: 20px;
+  position: relative;
+}
+.ms .compass .cordinates li:hover .li-svg rect {
+  stroke-dashoffset: 200px;
+}
+.ms .compass .cordinates li .li-svg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+.ms .compass .cordinates li .li-svg rect {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: orangered;
+  stroke-width: 3;
+  transition: 0.3s;
+  stroke-dasharray: 100, 20;
+}
+.ms .compass .cordinates li a {
+  display: block;
+  color: orangered;
+  font-family: lite;
+  text-decoration: none;
+}
+
+.tabs {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.tabs .screen {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(20, 30, 40, 0.699);
+  border: 2px white dashed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: right bottom;
+  transform: rotate(90deg);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.tabs .screen .close {
+  border: none;
+  font-family: pro;
+  outline: none;
+  color: orangered;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+.tabs .screen .close:hover {
+  transform: scale(0.8);
+}
+.tabs .screen p {
+  font-family: lite;
+  font-size: 30px;
+  color: white;
+}
+.tabs .showScreen {
+  transform: rotate(0deg);
+}
+.tabs .tab-btn {
+  width: 90%;
+  max-width: 500px;
+  min-height: 50px;
+  border: 2px solid orangered;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.tabs .tab-btn .tab-button {
+  border: 2px solid orangered;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-family: lite;
+}
+
+.todo-project {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.todo-project .todo-title {
+  font-family: pro;
+}
+.todo-project .display-head {
+  width: 90%;
+  max-width: 500px;
+  background-color: black;
+  border: 2px orangered solid;
+  padding: 20px;
+}
+.todo-project .display-head .display-master {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-project .display-head .display-master .author {
+  font-family: pro;
+  color: orangered;
+}
+.todo-project .display-head .display-master .alert {
+  color: red;
+  font-family: lite;
+}
+.todo-project .display-head .task-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-project .display-head .task-form label {
+  font-family: lite;
+  color: orangered;
+  margin-right: 10px;
+}
+.todo-project .display-head .task-form label input[type=text] {
+  padding: 10px;
+  border-radius: 10px;
+  color: orangered;
+  background-color: transparent;
+  border: 2px orangered solid;
+  outline: none;
+  font-family: lite;
+}
+.todo-project .display-head .task-form label input[type=text]::placeholder {
+  color: orange;
+}
+.todo-project .display-head .task-form .submit-btn {
+  background-color: orangered;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  font-family: lite;
+  font-weight: 800;
+  cursor: pointer;
+}
+.todo-project .display-head .display-task {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.todo-project .display-head .display-task .task {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  font-family: lite;
+  color: orangered;
+  border: 2px orangered solid;
+}
+.todo-project .display-head .display-task .task button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: pro;
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0.8s ease-in-out;
+}
+.todo-project .display-head .display-task .task button:hover {
+  transform: scale(1.17);
+}
+.todo-project .display-head .display-task .task .edit {
+  margin-left: auto;
+  margin-right: 10px;
+  background-color: lightgreen;
+  color: rgb(255, 255, 255);
+}
+.todo-project .display-head .display-task .task .del {
+  background-color: red;
+  color: white;
+}
+.todo-project .display-head .delete-all {
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  display: block;
+  width: 50%;
+  color: white;
+  background-color: red;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.todo-project .display-head .delete-all:hover {
+  transform: scale(0.78);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: orangered;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .ms {
+    height: 150px;
+    flex-direction: column;
+  }
+  .ms .mst {
+    font-size: 10vw;
+  }
+  .tabs .screen {
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in;
+  }
+  .tabs .showScreen {
+    transform: translate(0);
+  }
+  .tabs .tab-btn {
+    width: 50%;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .todo-project {
+    min-height: calc(100vh - 150px);
+  }
+  .todo-project .todo-title {
+    font-size: 6vw;
+    color: rgb(20, 30, 40);
+    filter: drop-shadow(0px 0px 3px orangered) drop-shadow(0px 0px 6px rgb(170, 68, 31)) drop-shadow(0px 0px 9px rgb(226, 171, 151));
+  }
+  .todo-project .display-head {
+    margin-top: 10px;
+  }
+  .todo-project .display-head .task-form {
+    flex-direction: column;
+  }
+  .todo-project .display-head .task-form label {
+    font-family: pro;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .todo-project .display-head .task-form label input[type=text] {
+    margin: 10px 0;
+  }
+  .todo-project .display-head .display-task {
+    margin-top: 10px;
+  }
+  .todo-project .display-head .display-task .task {
+    padding: 10px;
+  }
 }

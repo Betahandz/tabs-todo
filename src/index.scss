@@ -1,0 +1,361 @@
+// typography
+@font-face {
+    font-family: pro;
+    src: url(./fonts/Roboto-Bold.ttf);
+}
+@font-face {
+    font-family: lite;
+    src: url(./fonts/Roboto-Regular.ttf);
+}
+// mixin (mixin will be imported later)
+
+// *
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    resize: none;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgb(20, 30, 40);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: pro;
+    color: orangered;
+    font-size: 70px;
+}
+
+.ms {
+    // background-color: white;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    .mst {
+        font-family: pro;
+        font-size: 50px;
+        color:rgb(20, 30, 40);
+        filter: drop-shadow(-1px -1px 0 white)
+        drop-shadow(1px 1px 0 orangered);
+    }
+    
+    .compass {
+        // background-color: white;
+        .cordinates {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            list-style: none;
+            li {
+                padding: 10px 10px;
+                margin-right: 20px;
+                position: relative;
+                &:hover {
+                    .li-svg rect {
+                        stroke-dashoffset: 200px;
+                    }
+                }
+                .li-svg {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    left: 0;
+                    rect {
+                        width: 100%;
+                        height: 100%;
+                        fill: none;
+                        stroke: orangered;
+                        stroke-width: 3;
+                        transition: .3s;
+                        stroke-dasharray: 100,20 ;
+                    }
+                }
+                a {
+                    display: block;
+                    color: orangered;
+                    font-family: lite;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.tabs {
+    // background-color: white;
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .screen {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(20, 30, 40, 0.699);
+        border: 2px white dashed;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: right bottom;
+        transform: rotate(90deg);
+        transition: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .close {
+            border: none;
+            font-family: pro;
+            outline: none;
+            color: orangered;
+            background-color: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            &:hover {
+                transform: scale(.8);
+            }
+        }
+        p {
+            font-family: lite;
+            font-size: 30px;
+            color: white;
+        }
+    }
+    .showScreen {
+        transform: rotate(0deg);
+    }
+    .tab-btn {
+        width: 90%;
+        max-width: 500px;
+        min-height: 50px;
+        border: 2px solid orangered;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        .tab-button {
+            border: 2px solid orangered;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: capitalize;
+            font-family: lite;
+        }
+    }
+}
+
+
+
+// todo project paint
+.todo-project {
+    width: 100%;
+    height: calc(100vh - 100px);
+    // background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .todo-title {
+        font-family: pro;
+    }
+    .display-head {
+        width: 90%;
+        max-width: 500px;
+        // min-height: 200px;
+        background-color: black;
+        border: 2px orangered solid;
+        padding: 20px;
+        .display-master {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .author {
+                font-family: pro;
+                color: orangered;
+            }
+            .alert {
+                color: red;
+                font-family: lite;
+            }
+        }
+        .task-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            label {
+                font-family: lite;
+                color: orangered;
+                margin-right: 10px;
+                input[type = "text"] {
+                    padding: 10px;
+                    border-radius: 10px;
+                    color: orangered;
+                    background-color: transparent;
+                    border: 2px orangered solid;
+                    outline: none;
+                    font-family: lite;
+                    &::placeholder {
+                        color: orange;
+                    }
+                }
+            }
+            .submit-btn {
+                background-color: orangered;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                padding: 10px;
+                color: white;
+                font-family: lite;
+                font-weight: 800;
+                cursor:  pointer;
+            }
+        }
+        .display-task {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            overflow-y: scroll;
+            // background-color: white;
+            .task {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 20px;
+                font-family: lite;
+                color: orangered;
+                border: 2px orangered solid;
+                button {
+                    cursor: pointer;
+                    border: none;
+                    outline: none;
+                    font-family: pro;
+                    padding: 10px;
+                    border-radius: 5px;
+                    transition: transform .8s ease-in-out;
+                    // background-color: transparent;
+                    &:hover {
+                        transform: scale(1.17);
+                    }
+                }
+                .edit {
+                    margin-left: auto;
+                    margin-right: 10px;
+                    background-color: lightgreen;
+                    color: rgb(255, 255, 255);
+                }
+                .del {
+                    background-color: red;
+                    color: white;
+                }
+            }
+
+        }
+        .delete-all {
+            padding: 10px;
+            border: none;
+            margin-top: 10px;
+            display: block;
+            width: 50%;
+            color: white;
+            background-color: red;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20px;
+            cursor: pointer;
+            &:hover {
+                transform: scale(.78);
+            }
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: black;
+}
+::-webkit-scrollbar-thumb {
+    background-color: orangered;
+    width: 100%;
+
+}
+
+@media screen and (max-width: 768px){
+    .ms {
+        // background-color: white;
+        height: 150px;
+        // padding: 10px;
+        flex-direction: column;
+        .mst {
+            font-size: 10vw;
+        }
+    }
+    .tabs {
+        .screen {
+            transform: translateY(-100%);
+            transition: transform .4s ease-in;
+        }
+        .showScreen {
+            transform: translate(0);
+        }
+        .tab-btn {
+            width: 50%;
+            flex-direction: column;
+            padding: 10px;
+        }
+    }
+    .todo-project {
+        // background-color: white;
+        min-height: calc(100vh - 150px);
+        .todo-title {
+            font-size: 6vw;
+            color:rgb(20, 30, 40);
+            filter: drop-shadow(0px 0px 3px orangered)
+            drop-shadow(0px 0px 6px rgb(170, 68, 31))
+            drop-shadow(0px 0px 9px rgb(226, 171, 151))
+        }
+        .display-head {
+            // background-color: white;
+            margin-top: 10px;
+            .task-form {
+                flex-direction: column;
+                label {
+                    font-family: pro;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 5px;
+                    input[type = "text"] {
+                        margin: 10px 0;
+                    }
+                }
+            }
+            .display-task {
+                margin-top: 10px;
+                .task {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
